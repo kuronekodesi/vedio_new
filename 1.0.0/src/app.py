@@ -1,5 +1,8 @@
-import asyncio
+﻿import asyncio
 import time
+import cv2
+
+
 from walkoff_app_sdk.app_base import AppBase
 
 class Vedio(AppBase):
@@ -27,10 +30,13 @@ class Vedio(AppBase):
         # browser=webdriver.Chrome()
 
         browser.get("http://10.245.142.122:82/index.html")
+        rtmp_str = 'rtmp://10.245.142.122/vod/test.mp4'
+        for i in range(50):
+            cv2.VideoCapture(rtmp_str)
         # browser.execute_script("document.body.style.zoom='0.5'")#缩放0.5
         browser.set_window_size(1920, 1080)
         browser.maximize_window()
-        browser.find_element_by_xpath("/html/body/div/button").click()
+        #browser.find_element_by_xpath("/html/body/div/button").click()
         time.sleep(TIME)
         browser.quit()
         return "OK!!"
